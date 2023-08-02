@@ -2,19 +2,18 @@
 
 int main()
 {
+
+    std::vector<int> fakeData = {200,300,550,44,23,200,999,0};
+    //GUI loop
     Graphics GUI;
-
     while(GUI.window.isOpen()) {
-        sf::Event event;
 
-        //event handeling
-        while(GUI.window.pollEvent(event)) {
-            if(event.type == sf::Event::Closed)
-                GUI.window.close();
-        }
+        GUI.eventHandling();
 
+        //set up and render frame
         GUI.window.clear();
         GUI.drawConstants();
+        GUI.drawGraph(fakeData);
         GUI.window.display();
     }
 }
