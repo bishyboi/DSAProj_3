@@ -2,8 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
-#define START_YEAR 1900
-#define END_YEAR 1909
+#define START_YEAR 1950
+#define END_YEAR 2008
 
 class Graphics {
 private:

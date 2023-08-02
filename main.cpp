@@ -1,9 +1,15 @@
 #include "Graphics.h"
 
+struct song {
+    std::string language;
+    int ExpLyrics;
+    int year;
+};
+
 int main()
 {
 
-    std::vector<int> fakeData = {200,300,550,44,23,200,999,0};
+    std::vector<int> fakeData = {1,2,3,4,5,6,7,255,1000,1001,10000000};
     //GUI loop
     Graphics GUI;
     while(GUI.window.isOpen()) {
