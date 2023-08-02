@@ -1,0 +1,22 @@
+# ninja log v5
+4	625	7126459267474397	CMakeFiles/untitled4.dir/main.cpp.obj	66e47ef7c9e38cb8
+625	1127	7126459272434347	untitled4.exe	1634a27ab716e185
+8	972	7126495702982623	CMakeFiles/untitled4.dir/Graphics.cpp.obj	9db73e38d97fa9e1
+4	597	7126495797757322	CMakeFiles/untitled4.dir/main.cpp.obj	66e47ef7c9e38cb8
+8	610	7126495797896940	CMakeFiles/untitled4.dir/Graphics.cpp.obj	9db73e38d97fa9e1
+611	1264	7126495804379814	untitled4.exe	10e3fe3f63f805b7
+4	605	7126497252483204	CMakeFiles/untitled4.dir/Graphics.cpp.obj	9db73e38d97fa9e1
+606	1111	7126497257480675	untitled4.exe	10e3fe3f63f805b7
+4	603	7126497373673262	CMakeFiles/untitled4.dir/Graphics.cpp.obj	9db73e38d97fa9e1
+604	1103	7126497378600050	untitled4.exe	10e3fe3f63f805b7
+4	622	7126500331285518	CMakeFiles/untitled4.dir/main.cpp.obj	66e47ef7c9e38cb8
+8	639	7126500331455065	CMakeFiles/untitled4.dir/Graphics.cpp.obj	9db73e38d97fa9e1
+639	1160	7126500336611489	untitled4.exe	10e3fe3f63f805b7
+4	609	7126500480034535	CMakeFiles/untitled4.dir/main.cpp.obj	66e47ef7c9e38cb8
+609	1124	7126500485116749	untitled4.exe	10e3fe3f63f805b7
+5	619	7126500637470940	CMakeFiles/untitled4.dir/Graphics.cpp.obj	9db73e38d97fa9e1
+619	1161	7126500642821687	untitled4.exe	10e3fe3f63f805b7
+4	647	7126500769819456	CMakeFiles/untitled4.dir/Graphics.cpp.obj	9db73e38d97fa9e1
+648	1178	7126500775070848	untitled4.exe	10e3fe3f63f805b7
+4	605	7126500940846148	CMakeFiles/untitled4.dir/Graphics.cpp.obj	9db73e38d97fa9e1
+606	1133	7126500946062561	untitled4.exe	10e3fe3f63f805b7
