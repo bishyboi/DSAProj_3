@@ -9,6 +9,7 @@ public:
 
     //constant shapes to draw
     sf::RectangleShape textBack;
+    sf::Font font;
 
     //drawing functions
     void drawConstants();

@@ -6,6 +6,8 @@ Graphics::Graphics() {
     textBack.setSize(sf::Vector2f(150,20));
     textBack.setFillColor(sf::Color::White);
     textBack.setPosition(sf::Vector2f(window.getSize().x/2-(150/2),50));
+
+    font.loadFromFile("fonts/times.ttf")
 }
 
 void Graphics::drawConstants() {
