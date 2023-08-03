@@ -1,6 +1,8 @@
+#pragma once
 #include <string>
 
-struct song {
+struct song
+{
     std::string language;
     int ExpLyrics;
     int year;
