@@ -75,3 +75,39 @@ std::vector<song>* HashMap::search(std::string language) {
         }
     }
 }
+
+std::tuple<std::vector<int>,long long> HashMap::Algo(std::string language) {
+
+    std::tuple<std::vector<int>,long long> holder;
+
+    //start timer
+    auto start = std::chrono::high_resolution_clock::now();
+
+    //pull out the list of that language
+    std::vector<song>* langList = search(language);
+
+    //create data holders
+    std::vector<int> result;
+    result.reserve(END_YEAR - START_YEAR);
+
+    std::vector<int> tally;
+    tally.reserve(END_YEAR - START_YEAR);
+
+    //add the data onto the lists
+    for(int i = 0; i < langList->size(); i++) {
+        int index = (*langList)[i].year - START_YEAR;
+        result[index] += (*langList)[i].ExpLyrics;
+        tally[index]++;
+    }
+
+    //average the data for each year and round to intdsds
+    for(int i = 0; i < result.size(); i++) {
+        result[i] = int(result[i]/tally[i]);
+    }
+
+    //stop timer
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+
+    return make_tuple(result, duration.count());
+}

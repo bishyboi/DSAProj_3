@@ -61,44 +61,6 @@ Graphics::Graphics() {
     timer2.setPosition(sf::Vector2f(textBack.getSize().x + textBack.getPosition().x + 10,textBack.getPosition().y + 10));
 }
 
-void Graphics::eventHandling() {
-    sf::Event event;
-
-    //event handeling
-    while(window.pollEvent(event)) {
-        if(event.type == sf::Event::Closed)
-            window.close();
-
-        if(event.type == sf::Event::MouseButtonPressed ) {
-            //if mouse hits language button go into edit mode
-            if(!acceptingText) {
-                if(textBack.getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(window)))) {
-                    acceptingText = true;
-                    textBoxString = "";
-                }
-            }
-        }
-
-        if (event.type == sf::Event::TextEntered && acceptingText) {
-            //make sure character is english letter
-            if ((event.text.unicode < 123 && event.text.unicode > 64) || event.text.unicode == 32) {
-                textBoxString.push_back(static_cast<char>(event.text.unicode));
-            }
-        }
-        if(event.type == sf::Event::KeyPressed && acceptingText) {
-            if(event.key.code == sf::Keyboard::BackSpace) {
-                if(!textBoxString.empty()) {
-                    textBoxString.pop_back();
-                }
-            }
-            if(event.key.code == sf::Keyboard::Enter) {
-                //run algorithm on string
-                acceptingText = false;
-            }
-        }
-    }
-}
-
 void Graphics::drawConstants() {
     window.draw(textBack);
 

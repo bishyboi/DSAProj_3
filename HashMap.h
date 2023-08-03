@@ -1,6 +1,11 @@
 #pragma once
 #include <vector>
 #include "song.cpp"
+#include <chrono>
+
+#define START_YEAR 1950
+#define END_YEAR 2020
+
 class HashMap {
 private:
     std::vector<std::vector<song>> container;
@@ -11,5 +16,5 @@ public:
     HashMap(int cap);
     std::vector<song>* search(std::string language);
     void insert(song newSong);
-
+    std::tuple<std::vector<int>,long long> Algo(std::string language);
 };

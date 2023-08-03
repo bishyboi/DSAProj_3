@@ -3,15 +3,13 @@
 #include <vector>
 
 #define START_YEAR 1950
-#define END_YEAR 2008
+#define END_YEAR 2020
 
 class Graphics {
 private:
-    bool acceptingText = false;
-    std::string textBoxString;
+
 
     //constant shapes to draw
-    sf::RectangleShape textBack;
     sf::Font font;
     sf::Text textLang;
 
@@ -25,6 +23,8 @@ private:
     //timers
     sf::Text timer1;
     sf::Text timer2;
+
+    //algorithm function
 public:
     sf::RenderWindow window;
     Graphics();
@@ -32,6 +32,12 @@ public:
     //drawing functions
     void drawConstants();
     void drawGraph(std::vector<int> data);
-    void eventHandling();
+
+    //event handling data
+    bool acceptingText = false;
+    std::string textBoxString;
+    sf::RectangleShape textBack;
+
+
 };
 
