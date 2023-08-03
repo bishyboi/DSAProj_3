@@ -1,14 +1,15 @@
-#include "HashMap.h"
-#include "HashMap.cpp"
-#include "song.h"
+#include "../HashMap.h"
+#include "../HashMap.cpp"
+#include "../song.h"
 #include <vector>
 #include <iostream>
 
 int main()
 {
-    std::cout << "Hello" << std::endl;
+    std::cout << "Initializing map..." << std::endl;
     HashMap map (1000);
 
+    std::cout << "Map initialized." << std::endl;
     map.get_csv("../output_extra_clean/output_extra_clean100.csv");
 
     auto data = map.search("spanish");
