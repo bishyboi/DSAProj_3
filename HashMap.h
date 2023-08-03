@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "main.cpp"
+#include "song.cpp"
 class HashMap {
 private:
     std::vector<std::vector<song>> container;
