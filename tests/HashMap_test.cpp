@@ -31,6 +31,11 @@ void insert_test()
     map.insert(temp);
 }
 
+void algo_test()
+{
+    HashMap map(10000);
+}
+
 int main()
 {
     insert_test();
