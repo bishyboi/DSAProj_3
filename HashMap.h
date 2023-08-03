@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "song.cpp"
+#include "song.h"
 #include <chrono>
 
 #define START_YEAR 1950

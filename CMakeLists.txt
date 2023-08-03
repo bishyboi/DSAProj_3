@@ -3,7 +3,7 @@ project(untitled4)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(untitled4 main.cpp Graphics.h Graphics.cpp HashMap.h HashMap.cpp song.cpp)
+add_executable(untitled4 main.cpp Graphics.h Graphics.cpp HashMap.h HashMap.cpp song.h)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR C:/SFML/lib/cmake/SFML)
