@@ -4,13 +4,12 @@
 #include <vector>
 #include <iostream>
 
-int main()
+void get_csv_test()
 {
     std::cout << "Initializing map..." << std::endl;
     HashMap map (1000);
 
     std::cout << "Map initialized." << std::endl;
-    map.get_csv("../output_extra_clean/output_extra_clean100.csv");
 
     auto data = map.search("spanish");
 
@@ -18,5 +17,23 @@ int main()
     {
         std::cout<< "# of Explicit Lyrics: " << song.ExpLyrics << std::endl;
     }
+}
+
+void insert_test()
+{
+    HashMap map(10);
+
+    song temp;
+    temp.ExpLyrics = 3;
+    temp.language = "spanish";
+    temp.year = 2003;
+
+    map.insert(temp);
+}
+
+int main()
+{
+    insert_test();
+    //get_csv_test();
     return 0;
 }

@@ -2,6 +2,7 @@
 #include <vector>
 #include "song.h"
 #include <chrono>
+#include <tuple>
 
 #define START_YEAR 1950
 #define END_YEAR 2020

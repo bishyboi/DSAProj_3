@@ -109,5 +109,5 @@ std::tuple<std::vector<int>,long long> HashMap::Algo(std::string language) {
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
 
-    return make_tuple(result, duration.count());
+    return std::make_tuple(result, duration.count());
 }
