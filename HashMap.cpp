@@ -75,3 +75,37 @@ std::vector<song>* HashMap::search(std::string language) {
         }
     }
 }
+
+void HashMap::get_csv(const std::string &filename)
+{
+    
+    //data for storing words
+    std::vector<std::string> row;
+    std::string entry;
+
+    //open in the file and read each line
+    std::string line;
+    std::fstream file(filename,std::ios::in);
+    if(file.is_open()) {
+        getline(file, line);
+        while(!file.eof()) {
+            row.clear();
+            getline(file, line);
+
+            //break up the line into words
+            std::stringstream s(line);
+            while(getline(s,entry,',')) {
+                row.emplace_back(entry);
+            }
+            //make a song object with data
+            song temp;
+            temp.ExpLyrics = std::stoi(row[0]);
+            temp.language = row[1];
+            temp.year = std::stoi(row[2]);
+
+            //add data to data structure
+            this->insert(temp);
+        }
+
+    }
+}

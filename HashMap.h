@@ -1,6 +1,9 @@
 #pragma once
 #include <vector>
+#include <fstream>
+#include <sstream>
 #include "song.cpp"
+
 class HashMap {
 private:
     std::vector<std::vector<song>> container;
@@ -11,5 +14,5 @@ public:
     HashMap(int cap);
     std::vector<song>* search(std::string language);
     void insert(song newSong);
-
+    void get_csv(const std::string &filename);
 };
