@@ -2,7 +2,7 @@
 HashMap::HashMap(int cap) {
     capacity = cap;
     size = 0;
-    container.reserve(cap);
+    container.resize(cap);
 }
 
 //hash function of the structure
@@ -28,7 +28,7 @@ void HashMap::insert(song newSong) {
         std::vector<std::vector<song>> temp = container;
         container.clear();
         capacity *= 2;
-        container.reserve(capacity);
+        container.resize(capacity);
         //reinsert all data back into new hash map
         for(int i = 0; i < temp.size(); i ++) {
             if(!temp[i].empty()) {
@@ -42,11 +42,11 @@ void HashMap::insert(song newSong) {
     bool placed = false;
     while (!placed) {
         if(container[hashNum].empty()) {
-            container[hashNum].emplace_back(newSong);
+            container[hashNum].push_back(newSong);
             placed = true;
         }
         else if(container[hashNum][0].language == newSong.language) {
-            container[hashNum].emplace_back(newSong);
+            container[hashNum].push_back(newSong);
             placed = true;
         } else{
             //linear collision policy
@@ -88,10 +88,10 @@ std::tuple<std::vector<int>,long long> HashMap::Algo(std::string language) {
 
     //create data holders
     std::vector<int> result;
-    result.reserve(END_YEAR - START_YEAR);
+    result.resize(END_YEAR - START_YEAR);
 
     std::vector<int> tally;
-    tally.reserve(END_YEAR - START_YEAR);
+    tally.resize(END_YEAR - START_YEAR);
 
     //add the data onto the lists
     for(int i = 0; i < langList->size(); i++) {
