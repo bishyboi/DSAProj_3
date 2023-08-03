@@ -90,7 +90,7 @@ int main()
 
         //set up and render frame
         GUI.window.clear();
-        GUI.drawConstants();
+        GUI.drawConstants(dataTime1, 0);
         GUI.drawGraph(Data);
         GUI.window.display();
     }

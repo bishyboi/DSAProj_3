@@ -49,26 +49,37 @@ Graphics::Graphics() {
     }
 
     timer1.setFont(font);
-    timer1.setString("Data Structure 1's time (ms):");
+    timer1.setString("Data Structure 1's time (ms): ");
     timer1.setFillColor(sf::Color::White);
     timer1.setCharacterSize(18);
     timer1.setPosition(sf::Vector2f(textBack.getSize().x + textBack.getPosition().x + 10,textBack.getPosition().y - 10));
 
     timer2.setFont(font);
-    timer2.setString("Data Structure 2's time (ms):");
+    timer2.setString("Data Structure 2's time (ms): ");
     timer2.setFillColor(sf::Color::White);
     timer2.setCharacterSize(18);
     timer2.setPosition(sf::Vector2f(textBack.getSize().x + textBack.getPosition().x + 10,textBack.getPosition().y + 10));
 }
 
-void Graphics::drawConstants() {
+void Graphics::drawConstants(long long time1, long long time2) {
     window.draw(textBack);
 
     textLang.setString(textBoxString);
     window.draw(textLang);
 
+    std::string string1 = timer1.getString();
+    string1 = string1 + std::to_string(time1);
+    timer1.setString(string1);
+
+    std::string string2 = timer2.getString();
+    string2 = string2 + std::to_string(time2);
+    timer1.setString(string2);
+
     window.draw(timer1);
     window.draw(timer2);
+
+    timer1.setString("Data Structure 1's time (ms): ");
+    timer2.setString("Data Structure 2's time (ms): ");
 
     for(int i = 0; i < xLabels.size(); i++) {
         window.draw(xLabels[i]);
@@ -79,6 +90,8 @@ void Graphics::drawConstants() {
     for(int i = 0; i < axisBars.size(); i++) {
         window.draw(axisBars[i]);
     }
+
+
 }
 
 void Graphics::drawGraph(std::vector<int> data) {

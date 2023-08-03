@@ -30,7 +30,7 @@ public:
     Graphics();
 
     //drawing functions
-    void drawConstants();
+    void drawConstants(long long time1, long long time2);
     void drawGraph(std::vector<int> data);
 
     //event handling data

@@ -100,7 +100,7 @@ std::tuple<std::vector<int>,long long> HashMap::Algo(std::string language) {
         tally[index]++;
     }
 
-    //average the data for each year and round to intdsds
+    //average the data for each year and round to int
     for(int i = 0; i < result.size(); i++) {
         if ( tally[i] == 0) {
             result[i] = 0;
