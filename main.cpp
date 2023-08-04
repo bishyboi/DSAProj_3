@@ -43,7 +43,7 @@ int main()
 
     //graphing data
     std::vector<int> Data = {0};
-    long long dataTime1 = 0;
+    std::string dataTime1 = "0";
 
     //GUI loop
     Graphics GUI;
@@ -90,7 +90,7 @@ int main()
 
         //set up and render frame
         GUI.window.clear();
-        GUI.drawConstants(dataTime1, 0);
+        GUI.drawConstants(dataTime1, "0");
         GUI.drawGraph(Data);
         GUI.window.display();
     }
