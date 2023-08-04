@@ -1,6 +1,6 @@
 #include "Heap.h"
 
-Heap::Heap(int capacity_) 
+Heap::Heap(int capacity_)
 {
     capacity = capacity_;
     list = new node[capacity];
@@ -26,6 +26,7 @@ void Heap::insert(song s){
         tempNode.songList.push_back(s);
         list[size] = tempNode;
         size++;
+        std::cout << "emplaced " << list[size - 1].year << std::endl;
     }
     if (size > 1)
     {
@@ -36,9 +37,9 @@ void Heap::insert(song s){
 void Heap::print()
 {
     for (int i = 0; i < size; i++) {
-        cout << "Song data for: " << list[i].year << endl;
+        std::cout << "Song data for: " << list[i].year << std::endl;
         for (unsigned int j = 0; j < list[i].songList.size(); j++) {
-            cout << list[i].songList[j].language << " " << list[i].songList[j].ExpLyrics << endl;
+            std::cout << list[i].songList[j].language << " " << list[i].songList[j].ExpLyrics << std::endl;
         }
     }
 }
@@ -47,7 +48,7 @@ void Heap::heapifyUp(int index)
 {
     int parent = (index - 1) / 2;
     if (list[index].year > list[parent].year) {
-        swap(list[index], list[parent]);
+        std::swap(list[index], list[parent]);
         heapifyUp(parent);
     }
 }
