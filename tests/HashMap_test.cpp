@@ -34,11 +34,13 @@ void insert_test()
 void algo_test()
 {
     HashMap map(10000);
+
+    map.Algo("english");
 }
 
 int main()
 {
-    insert_test();
+    algo_test();
     //get_csv_test();
     return 0;
 }
