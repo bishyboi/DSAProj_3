@@ -4,12 +4,14 @@
 #include "Graphics.h"
 #include "HashMap.h"
 #include <tuple>
+#include "Heap.h"
 
 int main()
 {
 
     //make the data structures
     HashMap map(200);
+    Heap heap(200);
 
     //data for storing words
     std::vector<std::string> row;
@@ -37,6 +39,7 @@ int main()
 
             //add data to data structure
             map.insert(temp);
+            heap.insert(temp);
         }
 
     }
@@ -44,6 +47,7 @@ int main()
     //graphing data
     std::vector<int> Data = {0};
     std::string dataTime1 = "0";
+    std::string dataTime2 = "0";
 
     //GUI loop
     Graphics GUI;
@@ -80,9 +84,12 @@ int main()
                 }
                 //if string is entered run algo on that language
                 if(event.key.code == sf::Keyboard::Enter) {
+                    //run hash map
                     auto temp = (map.Algo(GUI.textBoxString));
                     Data = std::get<0>(temp);
                     dataTime1 = std::get<1>(temp);
+
+                    //run heap
                     GUI.acceptingText = false;
                 }
             }
@@ -90,7 +97,7 @@ int main()
 
         //set up and render frame
         GUI.window.clear();
-        GUI.drawConstants(dataTime1, "0");
+        GUI.drawConstants(dataTime1, dataTime2);
         GUI.drawGraph(Data);
         GUI.window.display();
     }
