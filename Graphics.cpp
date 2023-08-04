@@ -115,7 +115,9 @@ void Graphics::drawGraph(std::vector<double> data) {
         graphBars.emplace_back(sf::RectangleShape());
         graphBars[i].setFillColor(sf::Color::Cyan);
         graphBars[i].setPosition(i*(850/(END_YEAR - START_YEAR)) +28 + (850/(END_YEAR - START_YEAR)),540);
-        graphBars[i].setSize(sf::Vector2f(850/(END_YEAR - START_YEAR),450 * (data[i]/largestBar)));
+        if(data[i] != -1) {
+            graphBars[i].setSize(sf::Vector2f(850 / (END_YEAR - START_YEAR), 450 * (data[i] / largestBar)));
+        }
         graphBars[i].setRotation(180);
     }
 
@@ -127,12 +129,17 @@ void Graphics::drawGraph(std::vector<double> data) {
     //set up data labels
     for(int i = 0; i < data.size(); i++) {
         dataLabels.emplace_back(sf::Text());
-        dataLabels[i].setString(std::to_string(data[i]).substr(0,3));
+        if(data[i] != -1) {
+            dataLabels[i].setString(std::to_string(data[i]).substr(0, 3));
+        }
+        else {
+            dataLabels[i].setString("Null");
+        }
         dataLabels[i].setFont(font);
         dataLabels[i].setFillColor(sf::Color::White);
         dataLabels[i].setCharacterSize(12);
         dataLabels[i].setRotation(270);
-        dataLabels[i].setPosition(sf::Vector2f(graphBars[i].getPosition().x-(850/(END_YEAR - START_YEAR)),535 - graphBars[i].getSize().y));
+        dataLabels[i].setPosition(sf::Vector2f(graphBars[i].getPosition().x-(850/(END_YEAR - START_YEAR) + 2),535 - graphBars[i].getSize().y));
     }
 
     //draw data labels for graph

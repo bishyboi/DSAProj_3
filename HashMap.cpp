@@ -101,7 +101,7 @@ std::tuple<std::vector<double>,std::string> HashMap::Algo(std::string language) 
     //average the data for each year and round to int
     for(int i = 0; i < result.size(); i++) {
         if ( tally[i] == 0) {
-            result[i] = 0;
+            result[i] = -1;
         }
         else {
             result[i] = result[i] / tally[i];
