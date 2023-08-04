@@ -18,14 +18,7 @@ class Heap {
     node* list; //heap data structure
 public:
     Heap(int capacity_);
-
     void insert(song s);
-
     void print(); //for debugging and testing
-
-
     void heapifyUp(int index); //helper function to do the heap work;
-
-
-
 };

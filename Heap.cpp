@@ -26,7 +26,6 @@ void Heap::insert(song s){
         tempNode.songList.push_back(s);
         list[size] = tempNode;
         size++;
-        std::cout << "emplaced " << list[size - 1].year << std::endl;
     }
     if (size > 1)
     {
