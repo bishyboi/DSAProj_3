@@ -1,12 +1,11 @@
 # ninja log v5
-4	1057	7128154959942574	CMakeFiles/untitled4.dir/main.cpp.obj	66e47ef7c9e38cb8
-1066	1818	7128181919442227	untitled4.exe	a08c81a3a56d9c56
-2	354	7128202885096989	build.ninja	8992d7f01e2cb311
+5	1078	7128206447824863	CMakeFiles/untitled4.dir/main.cpp.obj	66e47ef7c9e38cb8
+1078	1843	7128206455418244	untitled4.exe	ac2ac35ef9568e5f
+2	354	7128214834261601	build.ninja	8992d7f01e2cb311
 5	1065	7128181911961766	CMakeFiles/untitled4.dir/Graphics.cpp.obj	9db73e38d97fa9e1
 12	466	7127342926214993	CMakeFiles/untitled4.dir/song.cpp.obj	567d6c30c458b44e
 5	773	7128153873344810	CMakeFiles/untitled4.dir/HashMap.cpp.obj	6c4bc11eddfbac93
-9	709	7128203465399631	CMakeFiles/untitled4.dir/Heap.cpp.obj	d8b80f877cd8294a
-5	1113	7128203469429097	CMakeFiles/untitled4.dir/main.cpp.obj	66e47ef7c9e38cb8
-1114	1885	7128203477091882	untitled4.exe	ac2ac35ef9568e5f
-5	1146	7128204430218856	CMakeFiles/untitled4.dir/main.cpp.obj	66e47ef7c9e38cb8
-1146	1923	7128204437943321	untitled4.exe	ac2ac35ef9568e5f
+9	662	7128206443675972	CMakeFiles/untitled4.dir/Heap.cpp.obj	d8b80f877cd8294a
+21	1128	7128252296325665	CMakeFiles/untitled4.dir/Heap.cpp.obj	d8b80f877cd8294a
+6	1343	7128252298459957	CMakeFiles/untitled4.dir/main.cpp.obj	66e47ef7c9e38cb8
+1343	2285	7128252307804826	untitled4.exe	ac2ac35ef9568e5f
