@@ -92,7 +92,7 @@ void Graphics::drawConstants(std::string time1, std::string time2) {
 
 }
 
-void Graphics::drawGraph(std::vector<int> data) {
+void Graphics::drawGraph(std::vector<double> data) {
     //clear old data
     graphBars.clear();
     dataLabels.clear();
@@ -127,7 +127,7 @@ void Graphics::drawGraph(std::vector<int> data) {
     //set up data labels
     for(int i = 0; i < data.size(); i++) {
         dataLabels.emplace_back(sf::Text());
-        dataLabels[i].setString(std::to_string(data[i]));
+        dataLabels[i].setString(std::to_string(data[i]).substr(0,3));
         dataLabels[i].setFont(font);
         dataLabels[i].setFillColor(sf::Color::White);
         dataLabels[i].setCharacterSize(12);

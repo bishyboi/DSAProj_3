@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <string>
 
 #define START_YEAR 1950
 #define END_YEAR 2020
@@ -31,7 +32,7 @@ public:
 
     //drawing functions
     void drawConstants(std::string time1, std::string time2);
-    void drawGraph(std::vector<int> data);
+    void drawGraph(std::vector<double> data);
 
     //event handling data
     bool acceptingText = false;

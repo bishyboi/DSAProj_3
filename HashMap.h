@@ -17,5 +17,5 @@ public:
     HashMap(int cap);
     std::vector<song>* search(std::string language);
     void insert(song newSong);
-    std::tuple<std::vector<int>,std::string> Algo(std::string language);
+    std::tuple<std::vector<double>,std::string> Algo(std::string language);
 };

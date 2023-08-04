@@ -45,7 +45,7 @@ int main()
     }
 
     //graphing data
-    std::vector<int> Data = {0};
+    std::vector<double> Data = {0};
     std::string dataTime1 = "0";
     std::string dataTime2 = "0";
 

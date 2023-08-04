@@ -1,3 +1,4 @@
+#include <cmath>
 #include "HashMap.h"
 HashMap::HashMap(int cap) {
     capacity = cap;
@@ -76,10 +77,7 @@ std::vector<song>* HashMap::search(std::string language) {
     }
 }
 
-std::tuple<std::vector<int>,std::string> HashMap::Algo(std::string language) {
-
-    std::tuple<std::vector<int>,long long> holder;
-
+std::tuple<std::vector<double>,std::string> HashMap::Algo(std::string language) {
     //start timer
     auto start = std::chrono::high_resolution_clock::now();
 
@@ -87,7 +85,7 @@ std::tuple<std::vector<int>,std::string> HashMap::Algo(std::string language) {
     std::vector<song>* langList = search(language);
 
     //create data holders
-    std::vector<int> result;
+    std::vector<double> result;
     result.resize((END_YEAR - START_YEAR)+1);
 
     std::vector<int> tally;
@@ -106,7 +104,7 @@ std::tuple<std::vector<int>,std::string> HashMap::Algo(std::string language) {
             result[i] = 0;
         }
         else {
-            result[i] = int(result[i] / tally[i]);
+            result[i] = result[i] / tally[i];
         }
     }
 
