@@ -9,6 +9,10 @@
 class Graphics {
 private:
 
+    //objects for axis label
+    sf::Text xAxis;
+    sf::Text yAxis;
+
 
     //constant shapes to draw
     sf::Font font;

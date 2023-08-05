@@ -2,7 +2,7 @@
 #include <iostream>
 #include "Graphics.h"
 Graphics::Graphics() {
-    window.create(sf::VideoMode(900,600),"Group project");
+    window.create(sf::VideoMode(950,600),"Group project");
     textBoxString = "Enter Language";
 
     textBack.setSize(sf::Vector2f(200,20));
@@ -62,6 +62,20 @@ Graphics::Graphics() {
     timer2.setFillColor(sf::Color::White);
     timer2.setCharacterSize(18);
     timer2.setPosition(sf::Vector2f(textBack.getSize().x + textBack.getPosition().x + 10,textBack.getPosition().y + 10));
+
+    xAxis.setFont(font);
+    xAxis.setFillColor(sf::Color::White);
+    xAxis.setCharacterSize(18);
+    xAxis.setPosition(400,560);
+    xAxis.setString("Year");
+
+    yAxis.setFont(font);
+    yAxis.setFillColor(sf::Color::White);
+    yAxis.setCharacterSize(18);
+    yAxis.setPosition(925,180);
+    yAxis.setRotation(90);
+    yAxis.setString("Average # of swears in a song");
+
 }
 
 void Graphics::drawConstants(std::string time1, std::string time2) {
@@ -152,4 +166,7 @@ void Graphics::drawGraph(std::vector<double> data) {
     for(int i = 0; i < dataLabels.size(); i++) {
         window.draw(dataLabels[i]);
     }
+
+    window.draw(xAxis);
+    window.draw(yAxis);
 }
