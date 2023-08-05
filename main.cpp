@@ -88,7 +88,7 @@ int main()
                     auto temp = (map.Algo(GUI.textBoxString));
                     Data = std::get<0>(temp);
                     dataTime1 = std::get<1>(temp);
-
+                    dataTime2 = heap.algo(GUI.textBoxString);
                     //run heap
                     GUI.acceptingText = false;
                 }
