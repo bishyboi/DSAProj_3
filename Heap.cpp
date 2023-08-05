@@ -51,3 +51,55 @@ void Heap::heapifyUp(int index)
         heapifyUp(parent);
     }
 }
+
+std::string Heap::algo(const std::string &language)
+{
+    auto start = std::chrono::high_resolution_clock::now();
+
+    // pull out the list of that language
+
+    // create data holders
+    std::vector<int> result;
+    result.resize((END_YEAR - START_YEAR) + 1);
+
+    std::vector<int> tally;
+    tally.resize((END_YEAR - START_YEAR) + 1);
+
+    // for (int i = 0; i < this->size; i++)
+    // {
+    //     std::cout << "Song data for: " << list[i].year << std::endl;
+    //     for (unsigned int j = 0; j < list[i].songList.size(); j++)
+    //     {
+             
+    //     }
+    // }
+
+    for (int i = 0; i < this->size; i++)
+    {
+        for (auto song : this->list[i].songList)
+        {
+            if (song.language == language)
+            {
+                result[i] += song.ExpLyrics;
+            }
+
+            tally[i]++;
+        }
+    }
+
+        //average the data for each year and round to int
+    for(int i = 0; i < result.size(); i++) {
+        if ( tally[i] == 0) {
+            result[i] = -1;
+        }
+        else {
+            result[i] = result[i] / tally[i];
+        }
+    }
+    
+    // stop timer
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+
+    return std::to_string(duration.count());
+}

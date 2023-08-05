@@ -5,6 +5,8 @@
 #include <chrono>
 #include <tuple>
 
+#define END_YEAR 2020
+#define START_YEAR 1950
 //Max Heap
 class Heap {
     struct node
@@ -21,4 +23,5 @@ public:
     void insert(song s);
     void print(); //for debugging and testing
     void heapifyUp(int index); //helper function to do the heap work;
+    std::string algo(const std::string &language);
 };

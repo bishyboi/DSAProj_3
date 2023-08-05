@@ -38,6 +38,7 @@ void HashMap::insert(song newSong) {
             }
         }
     }
+    
     hashNum = hash(newSong.language);
 
     bool placed = false;
