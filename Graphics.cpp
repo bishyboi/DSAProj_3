@@ -18,6 +18,7 @@ Graphics::Graphics() {
     textLang.setPosition(textBack.getPosition().x + 5,textBack.getPosition().y - 3);
 
 
+    //x scale text
     for(int i = 0; i <= END_YEAR - START_YEAR; i++) {
         xLabels.emplace_back(sf::Text());
         xLabels[i].setString(std::to_string((START_YEAR+i)%100));
@@ -27,10 +28,12 @@ Graphics::Graphics() {
         xLabels[i].setFont(font);
         xLabels[i].setFillColor(sf::Color::White);
         xLabels[i].setCharacterSize(12);
+        //position based on how many years there are
         xLabels[i].setPosition(i*(850/(END_YEAR - START_YEAR)) + 25,550);
         xLabels[i].setRotation(315.f);
     }
 
+    //y scale text
     for(int i = 0; i < 11; i++) {
         yLabels.emplace_back(sf::Text());
         yLabels[i].setString("0");
@@ -40,6 +43,7 @@ Graphics::Graphics() {
         yLabels[i].setCharacterSize(12);
     }
 
+    //cool math that makes the graph axis bars
     for(int i = 0; i < 2; i++) {
         axisBars.emplace_back(sf::RectangleShape());
         axisBars[i].setPosition(25,540);
@@ -48,6 +52,7 @@ Graphics::Graphics() {
         axisBars[i].setSize(sf::Vector2f(845 - (i*390),3));
     }
 
+    //set up timer characteristics
     timer1.setFont(font);
     timer1.setFillColor(sf::Color::White);
     timer1.setCharacterSize(18);
@@ -103,9 +108,7 @@ void Graphics::drawGraph(std::vector<double> data) {
         if (data[i] > largestBar)
             largestBar = data[i];
     }
-
     largestBar = std::pow(10.0,std::ceil(std::log10(largestBar)));
-
     for(int i = 0; i < 11; i++) {
         yLabels[i].setString(std::to_string(int((largestBar/10)*(10-i))));
     }
@@ -114,6 +117,7 @@ void Graphics::drawGraph(std::vector<double> data) {
     for(int i = 0; i < data.size(); i++) {
         graphBars.emplace_back(sf::RectangleShape());
         graphBars[i].setFillColor(sf::Color::Cyan);
+        //position is based on the year below it, size is based on the data spread over how many pixels we have
         graphBars[i].setPosition(i*(850/(END_YEAR - START_YEAR)) +28 + (850/(END_YEAR - START_YEAR)),540);
         if(data[i] != -1) {
             graphBars[i].setSize(sf::Vector2f(850 / (END_YEAR - START_YEAR), 450 * (data[i] / largestBar)));
@@ -133,12 +137,14 @@ void Graphics::drawGraph(std::vector<double> data) {
             dataLabels[i].setString(std::to_string(data[i]).substr(0, 3));
         }
         else {
+            //if there is no data set text to Null
             dataLabels[i].setString("Null");
         }
         dataLabels[i].setFont(font);
         dataLabels[i].setFillColor(sf::Color::White);
         dataLabels[i].setCharacterSize(12);
         dataLabels[i].setRotation(270);
+        //variable sized based on how many years we have
         dataLabels[i].setPosition(sf::Vector2f(graphBars[i].getPosition().x-(850/(END_YEAR - START_YEAR) + 2),535 - graphBars[i].getSize().y));
     }
 
