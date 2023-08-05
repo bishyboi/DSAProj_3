@@ -7,10 +7,13 @@ Heap::Heap(int capacity_)
     size = 0;
 }
 
-void Heap::insert(song s){
-    bool emplaced = false; //Boolean to see if a song was emplaced in a list.
-    for (int i = 0; i < size; i++) {
-        if (s.year == list[i].year) { //if a given year exist, emplace the song data at the given node and stop the loop
+void Heap::insert(song s)
+{
+    bool emplaced = false; // Boolean to see if a song was emplaced in a list.
+    for (int i = 0; i < size; i++)
+    {
+        if (s.year == list[i].year)
+        { // if a given year exist, emplace the song data at the given node and stop the loop
             list[i].songList.push_back(s);
             emplaced = true;
         }
@@ -19,7 +22,7 @@ void Heap::insert(song s){
             break;
         }
     }
-    if (!emplaced) //if a song has not been emplaced, make a new node for that year
+    if (!emplaced) // if a song has not been emplaced, make a new node for that year
     {
         node tempNode;
         tempNode.year = s.year;
@@ -35,9 +38,11 @@ void Heap::insert(song s){
 
 void Heap::print()
 {
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < size; i++)
+    {
         std::cout << "Song data for: " << list[i].year << std::endl;
-        for (unsigned int j = 0; j < list[i].songList.size(); j++) {
+        for (unsigned int j = 0; j < list[i].songList.size(); j++)
+        {
             std::cout << list[i].songList[j].language << " " << list[i].songList[j].ExpLyrics << std::endl;
         }
     }
@@ -46,7 +51,8 @@ void Heap::print()
 void Heap::heapifyUp(int index)
 {
     int parent = (index - 1) / 2;
-    if (list[index].year > list[parent].year) {
+    if (list[index].year > list[parent].year)
+    {
         std::swap(list[index], list[parent]);
         heapifyUp(parent);
     }
@@ -65,15 +71,6 @@ std::string Heap::algo(const std::string &language)
     std::vector<int> tally;
     tally.resize((END_YEAR - START_YEAR) + 1);
 
-    // for (int i = 0; i < this->size; i++)
-    // {
-    //     std::cout << "Song data for: " << list[i].year << std::endl;
-    //     for (unsigned int j = 0; j < list[i].songList.size(); j++)
-    //     {
-             
-    //     }
-    // }
-
     for (int i = 0; i < this->size; i++)
     {
         for (auto song : this->list[i].songList)
@@ -87,16 +84,19 @@ std::string Heap::algo(const std::string &language)
         }
     }
 
-        //average the data for each year and round to int
-    for(int i = 0; i < result.size(); i++) {
-        if ( tally[i] == 0) {
+    // average the data for each year and round to int
+    for (int i = 0; i < result.size(); i++)
+    {
+        if (tally[i] == 0)
+        {
             result[i] = -1;
         }
-        else {
+        else
+        {
             result[i] = result[i] / tally[i];
         }
     }
-    
+
     // stop timer
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);

@@ -1,84 +1,88 @@
 #include <valarray>
 #include <iostream>
 #include "Graphics.h"
-Graphics::Graphics() {
-    window.create(sf::VideoMode(950,600),"Group project");
+Graphics::Graphics()
+{
+    window.create(sf::VideoMode(950, 600), "Group project");
     textBoxString = "Enter Language";
 
-    textBack.setSize(sf::Vector2f(200,20));
+    textBack.setSize(sf::Vector2f(200, 20));
     textBack.setFillColor(sf::Color::White);
-    textBack.setPosition(sf::Vector2f(875/2-(textBack.getSize().x/2),30));
+    textBack.setPosition(sf::Vector2f(875 / 2 - (textBack.getSize().x / 2), 30));
 
-    //set up texts
-    font.loadFromFile( "fonts/times.ttf");
+    // set up texts
+    font.loadFromFile("fonts/times.ttf");
 
     textLang.setFont(font);
     textLang.setCharacterSize(18);
     textLang.setFillColor(sf::Color::Red);
-    textLang.setPosition(textBack.getPosition().x + 5,textBack.getPosition().y - 3);
+    textLang.setPosition(textBack.getPosition().x + 5, textBack.getPosition().y - 3);
 
-
-    //x scale text
-    for(int i = 0; i <= END_YEAR - START_YEAR; i++) {
+    // x scale text
+    for (int i = 0; i <= END_YEAR - START_YEAR; i++)
+    {
         xLabels.emplace_back(sf::Text());
-        xLabels[i].setString(std::to_string((START_YEAR+i)%100));
-        if(xLabels[i].getString().getSize() < 2) {
+        xLabels[i].setString(std::to_string((START_YEAR + i) % 100));
+        if (xLabels[i].getString().getSize() < 2)
+        {
             xLabels[i].setString("0" + xLabels[i].getString());
         }
         xLabels[i].setFont(font);
         xLabels[i].setFillColor(sf::Color::White);
         xLabels[i].setCharacterSize(12);
-        //position based on how many years there are
-        xLabels[i].setPosition(i*(850/(END_YEAR - START_YEAR)) + 25,550);
+        // position based on how many years there are
+        xLabels[i].setPosition(i * (850 / (END_YEAR - START_YEAR)) + 25, 550);
         xLabels[i].setRotation(315.f);
     }
 
-    //y scale text
-    for(int i = 0; i < 11; i++) {
+    // y scale text
+    for (int i = 0; i < 11; i++)
+    {
         yLabels.emplace_back(sf::Text());
         yLabels[i].setString("0");
         yLabels[i].setFillColor(sf::Color::White);
         yLabels[i].setFont(font);
-        yLabels[i].setPosition(0, 82 + (i* 45));
+        yLabels[i].setPosition(0, 82 + (i * 45));
         yLabels[i].setCharacterSize(12);
     }
 
-    //cool math that makes the graph axis bars
-    for(int i = 0; i < 2; i++) {
+    // cool math that makes the graph axis bars
+    for (int i = 0; i < 2; i++)
+    {
         axisBars.emplace_back(sf::RectangleShape());
-        axisBars[i].setPosition(25,540);
-        axisBars[i].setRotation(i* 270);
+        axisBars[i].setPosition(25, 540);
+        axisBars[i].setRotation(i * 270);
         axisBars[i].setFillColor(sf::Color::White);
-        axisBars[i].setSize(sf::Vector2f(845 - (i*390),3));
+        axisBars[i].setSize(sf::Vector2f(845 - (i * 390), 3));
     }
 
-    //set up timer characteristics
+    // set up timer characteristics
     timer1.setFont(font);
     timer1.setFillColor(sf::Color::White);
     timer1.setCharacterSize(18);
-    timer1.setPosition(sf::Vector2f(textBack.getSize().x + textBack.getPosition().x + 10,textBack.getPosition().y - 10));
+    timer1.setPosition(sf::Vector2f(textBack.getSize().x + textBack.getPosition().x + 10, textBack.getPosition().y - 10));
 
     timer2.setFont(font);
     timer2.setFillColor(sf::Color::White);
     timer2.setCharacterSize(18);
-    timer2.setPosition(sf::Vector2f(textBack.getSize().x + textBack.getPosition().x + 10,textBack.getPosition().y + 10));
+    timer2.setPosition(sf::Vector2f(textBack.getSize().x + textBack.getPosition().x + 10, textBack.getPosition().y + 10));
 
     xAxis.setFont(font);
     xAxis.setFillColor(sf::Color::White);
     xAxis.setCharacterSize(18);
-    xAxis.setPosition(400,560);
+    xAxis.setPosition(400, 560);
     xAxis.setString("Year");
 
     yAxis.setFont(font);
     yAxis.setFillColor(sf::Color::White);
     yAxis.setCharacterSize(18);
-    yAxis.setPosition(925,180);
+    yAxis.setPosition(925, 180);
     yAxis.setRotation(90);
     yAxis.setString("Average # of swears in a song");
-
 }
 
-void Graphics::drawConstants(std::string time1, std::string time2) {
+void Graphics::drawConstants(std::string time1, std::string time2)
+{
     window.draw(textBack);
 
     textLang.setString(textBoxString);
@@ -98,72 +102,83 @@ void Graphics::drawConstants(std::string time1, std::string time2) {
     timer1.setString("Hash map's time (micro s): ");
     timer2.setString("Heap's time (micro s): ");
 
-    for(int i = 0; i < xLabels.size(); i++) {
+    for (int i = 0; i < xLabels.size(); i++)
+    {
         window.draw(xLabels[i]);
     }
-    for(int i = 0; i < yLabels.size(); i++){
+    for (int i = 0; i < yLabels.size(); i++)
+    {
         window.draw(yLabels[i]);
     }
-    for(int i = 0; i < axisBars.size(); i++) {
+    for (int i = 0; i < axisBars.size(); i++)
+    {
         window.draw(axisBars[i]);
     }
-
-
 }
 
-void Graphics::drawGraph(std::vector<double> data) {
-    //clear old data
+void Graphics::drawGraph(std::vector<double> data)
+{
+    // clear old data
     graphBars.clear();
     dataLabels.clear();
 
-    //y axis scaling
+    // y axis scaling
     float largestBar = 0;
-    for(int i = 0; i < data.size(); i++) {
+    for (int i = 0; i < data.size(); i++)
+    {
         if (data[i] > largestBar)
             largestBar = data[i];
     }
-    largestBar = std::pow(10.0,std::ceil(std::log10(largestBar)));
-    for(int i = 0; i < 11; i++) {
-        yLabels[i].setString(std::to_string(int((largestBar/10)*(10-i))));
+    largestBar = std::pow(10.0, std::ceil(std::log10(largestBar)));
+    for (int i = 0; i < 11; i++)
+    {
+        yLabels[i].setString(std::to_string(int((largestBar / 10) * (10 - i))));
     }
 
-    //make bars for graph
-    for(int i = 0; i < data.size(); i++) {
+    // make bars for graph
+    for (int i = 0; i < data.size(); i++)
+    {
         graphBars.emplace_back(sf::RectangleShape());
         graphBars[i].setFillColor(sf::Color::Cyan);
-        //position is based on the year below it, size is based on the data spread over how many pixels we have
-        graphBars[i].setPosition(i*(850/(END_YEAR - START_YEAR)) +28 + (850/(END_YEAR - START_YEAR)),540);
-        if(data[i] != -1) {
+        // position is based on the year below it, size is based on the data spread over how many pixels we have
+        graphBars[i].setPosition(i * (850 / (END_YEAR - START_YEAR)) + 28 + (850 / (END_YEAR - START_YEAR)), 540);
+        if (data[i] != -1)
+        {
             graphBars[i].setSize(sf::Vector2f(850 / (END_YEAR - START_YEAR), 450 * (data[i] / largestBar)));
         }
         graphBars[i].setRotation(180);
     }
 
-    //draw bars for graph
-    for(int i = 0;i < graphBars.size(); i++) {
+    // draw bars for graph
+    for (int i = 0; i < graphBars.size(); i++)
+    {
         window.draw(graphBars[i]);
     }
 
-    //set up data labels
-    for(int i = 0; i < data.size(); i++) {
+    // set up data labels
+    for (int i = 0; i < data.size(); i++)
+    {
         dataLabels.emplace_back(sf::Text());
-        if(data[i] != -1) {
+        if (data[i] != -1)
+        {
             dataLabels[i].setString(std::to_string(data[i]).substr(0, 3));
         }
-        else {
-            //if there is no data set text to Null
+        else
+        {
+            // if there is no data set text to Null
             dataLabels[i].setString("Null");
         }
         dataLabels[i].setFont(font);
         dataLabels[i].setFillColor(sf::Color::White);
         dataLabels[i].setCharacterSize(12);
         dataLabels[i].setRotation(270);
-        //variable sized based on how many years we have
-        dataLabels[i].setPosition(sf::Vector2f(graphBars[i].getPosition().x-(850/(END_YEAR - START_YEAR) + 2),535 - graphBars[i].getSize().y));
+        // variable sized based on how many years we have
+        dataLabels[i].setPosition(sf::Vector2f(graphBars[i].getPosition().x - (850 / (END_YEAR - START_YEAR) + 2), 535 - graphBars[i].getSize().y));
     }
 
-    //draw data labels for graph
-    for(int i = 0; i < dataLabels.size(); i++) {
+    // draw data labels for graph
+    for (int i = 0; i < dataLabels.size(); i++)
+    {
         window.draw(dataLabels[i]);
     }
 
