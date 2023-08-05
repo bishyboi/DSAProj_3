@@ -90,6 +90,8 @@ int main()
                     dataTime1 = std::get<1>(temp);
                     dataTime2 = heap.algo(GUI.textBoxString);
                     //run heap
+                    dataTime2 = heap.algo(GUI.textBoxString);
+
                     GUI.acceptingText = false;
                 }
             }

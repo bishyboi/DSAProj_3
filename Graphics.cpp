@@ -76,8 +76,8 @@ void Graphics::drawConstants(std::string time1, std::string time2) {
     window.draw(timer1);
     window.draw(timer2);
 
-    timer1.setString("Data Structure 1's time (micro s): ");
-    timer2.setString("Data Structure 2's time (micro s): ");
+    timer1.setString("Hash map's time (micro s): ");
+    timer2.setString("Heap's time (micro s): ");
 
     for(int i = 0; i < xLabels.size(); i++) {
         window.draw(xLabels[i]);
